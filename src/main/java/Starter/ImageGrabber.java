@@ -1,5 +1,6 @@
 package Starter;
 
+import ImageProcessor.ProcessImage;
 import com.microsoft.playwright.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Base64;
+import java.util.Objects;
+import java.util.Random;
+
+import static ImageProcessor.ProcessImage.convertImages;
+import static ImageProcessor.ProcessImage.preloadColorArray;
 
 @NoArgsConstructor
 public class ImageGrabber {
@@ -32,6 +39,7 @@ public class ImageGrabber {
     public BufferedImage grabImage(){
         BufferedImage bImage;
         try (Playwright playwright = Playwright.create()) {
+            preloadColorArray();
             BrowserType webkit = playwright.webkit();
             Browser browser = webkit.launch();
             BrowserContext context = browser.newContext();
@@ -42,8 +50,12 @@ public class ImageGrabber {
             bImage = resizeImage(findImage(page), 238, 150);
             browser.close();
 
+
             File outputFile = new File(drawEntity + ".png");
             ImageIO.write(bImage, "png", outputFile);
+            convertImages(bImage);
+            File outputFileConverted = new File(drawEntity + "_converted.png");
+            ImageIO.write(bImage, "png", outputFileConverted);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -51,11 +63,26 @@ public class ImageGrabber {
         return bImage;
     }
 
-    private BufferedImage findImage(Page page) {
-        String selector = "img >> visible=true";
+    private BufferedImage findImage(final Page page) throws IOException {
+        final String selector = ".bRMDJf.islir > img";
         page.waitForSelector(selector);
-        Locator locator = page.locator(selector);
-        String imageURL = locator.nth(locator.count() - 10).getAttribute("src");
+        final Locator locator = page.locator(selector);
+        final Random random = new Random();
+        String imageURL = locator.nth(random.nextInt(locator.count())).getAttribute("src");
+        for(int i = 0; i < locator.count(); i++)
+        {
+            if(Objects.isNull(imageURL)) {
+                imageURL = locator.nth(random.nextInt(locator.count())).getAttribute("src");
+            }
+            else {
+                i = locator.count();
+            }
+        }
+        if(imageURL.contains(";base64,")) {
+            String bits = imageURL.substring(imageURL.indexOf(";base64,") + 8);
+            byte[] decodedString = Base64.getDecoder().decode(bits);
+            return ImageIO.read(new ByteArrayInputStream(decodedString));
+        }
         System.out.println(imageURL);
         Image image;
         try {
