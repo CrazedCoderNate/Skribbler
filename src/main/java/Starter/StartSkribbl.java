@@ -1,9 +1,18 @@
 package Starter;
 
+import Entities.Skribbl;
+
+import java.awt.image.BufferedImage;
+
+import static Drawer.DrawImage.drawImage;
+import static Identifier.FindSkribblEntities.*;
+
 public class StartSkribbl {
 
-    public static void main(String[] args) {
-        ImageGrabber imageGrabber = new ImageGrabber("cute dog");
-        imageGrabber.grabImage();
+    public static void main(String[] args) throws InterruptedException {
+        ImageGrabber imageGrabber = new ImageGrabber("Enter Search Query Here");
+        BufferedImage bImage = imageGrabber.grabImage();
+        Skribbl skribbl = findElements();
+        drawImage(bImage, skribbl);
     }
 }

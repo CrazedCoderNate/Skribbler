@@ -1,11 +1,14 @@
 package ImageProcessor;
 
+import lombok.Getter;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class ProcessImage {
 
+    @Getter
     private static ArrayList<Color> colors;
     public static void convertImages(BufferedImage bImage)
     {
@@ -45,23 +48,27 @@ public class ProcessImage {
         colors.add(new Color(255, 255, 255)); // WHITE 255 255 255
         colors.add(new Color(0, 0, 0));// BLACK 0 0 0
         colors.add(new Color(193, 193, 193)); // LIGHT GREY 193 193 193
-        colors.add(new Color(76, 76, 76)); // DARK GREY 76 76 76
-        colors.add(new Color(237, 22, 14));// RED 237 22 14
+        colors.add(new Color(80, 80, 80)); // DARK GREY 76 76 76
+        colors.add(new Color(239, 19, 11));// RED 239 19 11
         colors.add(new Color(116, 11, 7));// MAROON 116 11 7
         colors.add(new Color(255, 113, 0));// ORANGE 255 113 0
         colors.add(new Color(194, 56, 0));// RUST 194 56 0
         colors.add(new Color(255, 228, 0));// YELLOW 255 228 0
         colors.add(new Color(232, 162, 0));// LEMON 232 162 0
         colors.add(new Color(0, 204, 0));// LIME 0 204 0
-        colors.add(new Color(0, 85, 16));// FOREST 0 85 16
-        colors.add(new Color(0, 178, 255));// SKY 0 178 255
+        colors.add(new Color(0, 70, 25));// FOREST 0 85 16
+        colors.add(new Color(0, 255, 145));// AQUA 0 85 16
+        colors.add(new Color(0, 120, 93));// EMERALD 0 178 255
+        colors.add(new Color(0, 178, 255));// SKY 0 204 0
         colors.add(new Color(0, 86, 158));// MURKY BLUE 0 86 158
         colors.add(new Color(35, 31, 211));// BLUE 35 31 211
         colors.add(new Color(14, 8, 101));// NAVY 14 8 101
         colors.add(new Color(163, 0, 186));// MAGENTA 163 0 186
         colors.add(new Color(85, 0, 105));// PURPLE 85 0 105
-        colors.add(new Color(211, 124, 170));// PINK 211 124 170
-        colors.add(new Color(167, 85, 116));// SALMON 167 85 116
+        colors.add(new Color(223, 105, 167));// PINK 211 124 170
+        colors.add(new Color(135, 53, 84));// SALMON 167 85 116
+        colors.add(new Color(255, 172, 142));// TAN 211 124 170
+        colors.add(new Color(204, 119, 77));// LIGHT SKIN 167 85 116
         colors.add(new Color(160, 82, 45));// LIGHT BROWN 160 82 45
         colors.add(new Color(99, 48, 13));// BROWN 99 48 13
     }

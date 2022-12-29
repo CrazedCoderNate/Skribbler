@@ -13,7 +13,5 @@ public class DrawColor {
     @Getter @Setter
     private int yPosition;
     @Getter @Setter
-    private String colorName;
-    @Getter @Setter
     private Color color;
 }
