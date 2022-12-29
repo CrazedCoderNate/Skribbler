@@ -10,7 +10,7 @@ import static Identifier.FindSkribblEntities.*;
 public class StartSkribbl {
 
     public static void main(String[] args) throws InterruptedException {
-        ImageGrabber imageGrabber = new ImageGrabber("Grapefruit");
+        ImageGrabber imageGrabber = new ImageGrabber("Enter Search Query Here");
         BufferedImage bImage = imageGrabber.grabImage();
         Skribbl skribbl = findElements();
         drawImage(bImage, skribbl);

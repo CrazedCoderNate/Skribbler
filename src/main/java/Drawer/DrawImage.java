@@ -17,17 +17,19 @@ public class DrawImage {
         initRobot();
         int delayLol = 0;
         for(DrawColor color : skribbl.getDrawColors()) {
-            clickColor(color);
-            for(int x = 0; x <  bImage.getWidth(); x++) {
-                for(int y = 0; y < bImage.getHeight(); y++) {
-                    if(bImage.getRGB(x,y) == color.getColor().getRGB()) {
-                        robot.mouseMove(skribbl.getCanvasBox().getXPosition() + 3 * x, skribbl.getCanvasBox().getYPosition()+ 2 * y);
-                        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-                        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-                        delayLol++;
-                        if(delayLol > 50) {
-                            robot.delay(15);
-                            delayLol = 0;
+            if(!(color.getColor().getBlue() == 255 && color.getColor().getGreen() == 255 && color.getColor().getRed() == 255)) {
+                clickColor(color);
+                for(int x = 0; x <  bImage.getWidth(); x++) {
+                    for (int y = 0; y < bImage.getHeight(); y++) {
+                        if (bImage.getRGB(x, y) == color.getColor().getRGB()) {
+                            robot.mouseMove(skribbl.getCanvasBox().getXPosition() + 2 * x, skribbl.getCanvasBox().getYPosition() + 2 * y);
+                            robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+                            robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+                            delayLol++;
+                            if (delayLol > 50) {
+                                robot.delay(12);
+                                delayLol = 0;
+                            }
                         }
                     }
                 }

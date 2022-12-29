@@ -47,7 +47,7 @@ public class ImageGrabber {
             page.navigate(IMAGE_SEARCH + drawEntity);
             page.waitForLoadState();
             //page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get(drawEntity + ".png")));
-            bImage = resizeImage(findImage(page), 200, 170);
+            bImage = resizeImage(findImage(page), 200, 150);
             browser.close();
 
 
