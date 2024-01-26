@@ -12,3 +12,7 @@ Runnable jar or exe.
 
 # Known Issues
 Skribbl.io itself is the limiting factor for speed of drawing. It only allows around 1 click every 10-15 milliseconds, Further improvements may include line drawing instead of individual points as a workaround to this limiting factor.
+
+# Example image drawn in Skribbl with this code
+<img width="302" alt="image" src="https://github.com/CrazedCoderNate/Skribbler/assets/15204470/4d8fe3ff-6c17-4570-9bfa-e253bba6bd86">
+
