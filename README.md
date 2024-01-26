@@ -15,4 +15,6 @@ Skribbl.io itself is the limiting factor for speed of drawing. It only allows ar
 
 # Example image drawn in Skribbl with this code
 <img width="302" alt="image" src="https://github.com/CrazedCoderNate/Skribbler/assets/15204470/4d8fe3ff-6c17-4570-9bfa-e253bba6bd86">
+<img width="569" alt="image" src="https://github.com/CrazedCoderNate/Skribbler/assets/15204470/ad4da6a0-dc89-4cc1-9a49-510872df19e0">
+
 
