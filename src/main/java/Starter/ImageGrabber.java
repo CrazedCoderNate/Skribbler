@@ -64,11 +64,11 @@ public class ImageGrabber {
     }
 
     private BufferedImage findImage(final Page page) throws IOException {
-        final String selector = ".bRMDJf.islir > img";
+        final String selector = ".fR600b.islir img";
         page.waitForSelector(selector);
         final Locator locator = page.locator(selector);
         final Random random = new Random();
-        String imageURL = locator.nth(random.nextInt(locator.count())).getAttribute("src");
+        String imageURL = locator.nth(1).getAttribute("src");//locator.nth(random.nextInt(locator.count())).getAttribute("src");
         for(int i = 0; i < locator.count(); i++)
         {
             if(Objects.isNull(imageURL)) {
