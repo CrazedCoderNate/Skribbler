@@ -23,15 +23,23 @@ public class DrawImage {
                     for (int y = 0; y < bImage.getHeight(); y++) {
                         if (bImage.getRGB(x, y) == color.getColor().getRGB()) {
                             robot.mouseMove(skribbl.getCanvasBox().getXPosition() + 2 * x, skribbl.getCanvasBox().getYPosition() + 2 * y);
-                            robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-                            robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+                            if(y - 1 > 0 && (bImage.getRGB(x, y-1) != color.getColor().getRGB())) {
+                                robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+                            }
+                            if(y + 1 < bImage.getHeight() && (bImage.getRGB(x, y+1) != color.getColor().getRGB())) {
+                                robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+                            }
+                            if(y == bImage.getHeight() - 1) {
+                                robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+                            }
                             delayLol++;
-                            if (delayLol > 50) {
-                                robot.delay(12);
+                            if (delayLol > 10) {
+                                robot.delay(15);
                                 delayLol = 0;
                             }
                         }
                     }
+                    robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
                 }
             }
         }

@@ -16,7 +16,7 @@ public class ProcessImage {
             for(int y = 0; y< bImage.getHeight(); y++) {
                 int minDist = 255*3, minIndex = -1;
                 for(int i = 0; i < colors.size(); i++) {
-                    double dist = euclidianColorDistance(new Color(bImage.getRGB(x, y)), colors.get(i));
+                    double dist = myColorDistance(new Color(bImage.getRGB(x, y)), colors.get(i));
                     if(dist < minDist) {
                         minDist = (int)dist;
                         minIndex = i;

@@ -64,8 +64,10 @@ public class ImageGrabber {
     }
 
     private BufferedImage findImage(final Page page) throws IOException {
-        final String selector = ".bRMDJf.islir > img";
+        //final String selector = ".bRMDJf.islir > img";
+        final String selector = ".fR600b.islir img"; // Keep in mind google changes this every once in a while which might break this program.
         page.waitForSelector(selector);
+        System.out.println("Found image...");
         final Locator locator = page.locator(selector);
         final Random random = new Random();
         String imageURL = locator.nth(random.nextInt(locator.count())).getAttribute("src");
